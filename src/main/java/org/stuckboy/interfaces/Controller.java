@@ -17,7 +17,6 @@ public interface Controller {
      * Establishes a connection and transmits the first query, with the second
      * being used to offset the query in case additional results are desired.
      * @param query The query to be sent, as a {@link String}.
-     * @param depth An offset to be used to obtain further results if necessary.
      * @return a prepared {@link HttpURLConnection}, or {@code Null}.
      */
     static HttpURLConnection makeConnection(String query) {
