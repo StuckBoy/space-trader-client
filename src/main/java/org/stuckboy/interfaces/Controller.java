@@ -19,12 +19,21 @@ public interface Controller {
      * @param query The query to be sent, as a {@link String}.
      * @return a prepared {@link HttpURLConnection}, or {@code Null}.
      */
-    static HttpURLConnection makeConnection(String query) {
+    static HttpURLConnection makeXmlConnection(String query) {
         HttpURLConnection connection = null;
         try {
-            connection = ConnectionManager.getConnection(query);
+            connection = ConnectionManager.getXmlConnection(query);
         } catch (IOException exception) {
-            System.out.println("Well that ain't good: " + exception.getMessage());
+            exception.printStackTrace();
+        }
+        return connection;
+    }
+
+    static HttpURLConnection makeJsonConnection(String query) {
+        HttpURLConnection connection = null;
+        try {
+            connection = ConnectionManager.getJsonConnection(query);
+        } catch (IOException exception) {
             exception.printStackTrace();
         }
         return connection;
@@ -47,6 +56,5 @@ public interface Controller {
     static void logResponse(HttpURLConnection connection) throws IOException {
         int responseCode = connection.getResponseCode();
         String responseMessage = connection.getResponseMessage();
-        System.out.println("Error: Server returned " + responseCode + Constants.WHITESPACE + responseMessage);
     }
 }
