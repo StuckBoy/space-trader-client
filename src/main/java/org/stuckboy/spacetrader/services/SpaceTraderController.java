@@ -30,7 +30,7 @@ public class SpaceTraderController implements Controller {
         return connection;
     }
 
-    @GetMapping(ACCOUNT)
+    @GetMapping(path = ACCOUNT, produces = "application/json")
     public static String getAccount(@RequestParam String agentName) {
         String result = "";
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
@@ -49,7 +49,7 @@ public class SpaceTraderController implements Controller {
         return result;
     }
 
-    @GetMapping(AGENT)
+    @GetMapping(path = AGENT, produces = "application/json")
     public static String getAgent(@RequestParam String agentName) {
         String result = "";
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
@@ -68,7 +68,7 @@ public class SpaceTraderController implements Controller {
         return result;
     }
 
-    @GetMapping(AGENT_DETAILS)
+    @GetMapping(path = AGENT_DETAILS, produces = "application/json")
     public static String getAgentDetails(@RequestParam String agentName, @RequestParam Integer page) {
         String result = "";
         if (page < 1) {
