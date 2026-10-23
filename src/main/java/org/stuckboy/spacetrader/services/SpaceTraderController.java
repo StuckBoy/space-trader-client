@@ -68,6 +68,25 @@ public class SpaceTraderController implements Controller {
         return result;
     }
 
+    @GetMapping(AGENT_DETAILS)
+    public static String getAgentDetails(@RequestParam String agentName, @RequestParam Integer offset) {
+        String result = "";
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(MY_AGENT))
+                .header("Authorization", "Bearer " + AGENT_SECRET)
+                .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
+                .build();
+        try (HttpClient client = HttpClient.newHttpClient()) {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            result = response.body();
+            System.out.println(result);
+        } catch (IOException | InterruptedException e) {
+            System.err.println(e.getMessage());
+        }
+        return result;
+    }
+
     /**
      * Reads from the given {@link BufferedReader} to obtain a returned token,
      * in {@link String} form.

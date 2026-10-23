@@ -8,4 +8,5 @@ public final class SpaceTradersRestEndpoints {
     //Project Endpoints
     public static final String ACCOUNT = "/account";
     public static final String AGENT = "/agent";
+    public static final String AGENT_DETAILS = "/agent-details";
 }
