@@ -1,14 +1,18 @@
 package org.stuckboy.spacetrader.services;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.stuckboy.constants.Constants;
 import org.stuckboy.interfaces.Controller;
 import org.stuckboy.utils.FileReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.*;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.*;
 
@@ -27,33 +31,39 @@ public class SpaceTraderController implements Controller {
     }
 
     @GetMapping(ACCOUNT)
-    public static String getAccount() {
+    public static String getAccount(@RequestParam String agentName) {
         String result = "";
-        URL url;
-        try {
-            URI uri = new URI(MY_ACCOUNT);
-            url = uri.toURL();
-        } catch (URISyntaxException | MalformedURLException ex) {
-            System.err.println("The URL is malformed");
-            System.err.println(ex.getMessage());
-            return result;
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(MY_ACCOUNT))
+                .header("Authorization", "Bearer " + AGENT_SECRET)
+                .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
+                .build();
+        try (HttpClient client = HttpClient.newHttpClient()) {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            result = response.body();
+            System.out.println(result);
+        } catch (IOException | InterruptedException e) {
+            System.err.println(e.getMessage());
         }
-        HttpURLConnection connection;
-        try {
-            connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setRequestProperty("Authorization", "Bearer" + SPACE_TRADERS_SECRET);
-            connection.setDoOutput(true);
-            int responseCode = connection.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                result = getContent(br);
-            } else {
-                System.err.println(connection.getResponseMessage());
-            }
-            connection.disconnect();
-        } catch (IOException ex) {
-            System.err.println("The connection could not be established");
+        return result;
+    }
+
+    @GetMapping(AGENT)
+    public static String getAgent(@RequestParam String agentName) {
+        String result = "";
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(MY_AGENT))
+                .header("Authorization", "Bearer " + AGENT_SECRET)
+                .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
+                .build();
+        try (HttpClient client = HttpClient.newHttpClient()) {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            result = response.body();
+            System.out.println(result);
+        } catch (IOException | InterruptedException e) {
+            System.err.println(e.getMessage());
         }
         return result;
     }

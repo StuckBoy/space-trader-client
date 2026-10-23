@@ -28,4 +28,5 @@ public final class Constants {
     public static final String SERVER_URL = "server_url";
     public static final String WHITESPACE = " ";
     public static final String SPACE_TRADER_SECRET = "space_trader_secret";
+    public static final String AGENT_SECRET = "agent_";
 }
