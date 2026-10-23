@@ -69,11 +69,14 @@ public class SpaceTraderController implements Controller {
     }
 
     @GetMapping(AGENT_DETAILS)
-    public static String getAgentDetails(@RequestParam String agentName, @RequestParam Integer offset) {
+    public static String getAgentDetails(@RequestParam String agentName, @RequestParam Integer page) {
         String result = "";
+        if (page < 1) {
+            page = 1; //Prevent zero and negative input
+        }
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(MY_AGENT))
+                .uri(URI.create(MY_AGENT+"&page="+page))
                 .header("Authorization", "Bearer " + AGENT_SECRET)
                 .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
                 .build();
