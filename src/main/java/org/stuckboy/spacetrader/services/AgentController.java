@@ -59,7 +59,7 @@ public class AgentController implements Controller {
     }
 
     /**
-     * Obtains recent event data for a particular Agent.
+     * Obtains recent event data for our Agent.
      * @param agentName The name of the Agent whose data we are interested in.
      * @return A {@link String} containing the recent events of the Agent.
      */
