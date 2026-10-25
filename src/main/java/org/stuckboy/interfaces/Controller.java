@@ -5,6 +5,9 @@ import org.stuckboy.utils.ConnectionManager;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 /**
  * An interface designed to homogenize RESTful API calls. Implementors of this
@@ -13,6 +16,19 @@ import java.net.HttpURLConnection;
  * need for all implementors to gain access to the same functionality.
  */
 public interface Controller {
+
+    static String sendRequest(HttpRequest request) {
+        String result = "";
+        try (HttpClient client = HttpClient.newHttpClient()) {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            result = response.body();
+            System.out.println(result);
+        } catch (IOException | InterruptedException e) {
+            System.err.println(e.getMessage());
+        }
+        return result;
+    }
+
     /**
      * Establishes a connection and transmits the first query, with the second
      * being used to offset the query in case additional results are desired.
