@@ -17,6 +17,9 @@ public final class SpaceTradersRestEndpoints {
     public static final String FULFILL = "/fulfill";
     public static final String DELIVER = "/deliver";
     public static final String NEGOTIATE = "/negotiate/contract";
+    //Faction Operations
+    public static final String LIST_FACTIONS = SPACE_TRADERS + "/factions";
+    public static final String MY_FACTION = SPACE_TRADERS + "/my/factions";
     //System Operations
     public static final String ERROR_CODES = SPACE_TRADERS + "/error-codes";
 
@@ -32,6 +35,9 @@ public final class SpaceTradersRestEndpoints {
     public static final String AGENT_CONTRACTS = "/agent-contracts";
     public static final String AGENT_CONTRACT = "/agent-contract";
     //Faction Endpoints
+    public static final String LOOKUP_FACTIONS = "/lookup-factions";
+    public static final String FACTION_DATA = "/faction-data";
+    public static final String AGENT_FACTION = "/agent-faction";
     //Fleet Endpoints
     //System Endpoints
     //Data Endpoints
