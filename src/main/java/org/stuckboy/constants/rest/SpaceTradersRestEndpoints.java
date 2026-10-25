@@ -31,7 +31,6 @@ public final class SpaceTradersRestEndpoints {
     //Contract Endpoints
     public static final String AGENT_CONTRACTS = "/agent-contracts";
     public static final String AGENT_CONTRACT = "/agent-contract";
-    public static final String CONTRACT = "/contract";
     //Faction Endpoints
     //Fleet Endpoints
     //System Endpoints

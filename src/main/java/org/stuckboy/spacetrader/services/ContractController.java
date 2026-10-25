@@ -29,7 +29,7 @@ public class ContractController implements Controller {
         return Controller.sendRequest(request);
     }
 
-    @GetMapping(path = CONTRACT, produces = APPLICATION_JSON)
+    @GetMapping(path = AGENT_CONTRACT, produces = APPLICATION_JSON)
     public static String fetchContract(@RequestParam String agentName, @RequestParam String contractName) {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         HttpRequest request = HttpRequest.newBuilder()
