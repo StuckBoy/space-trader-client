@@ -5,6 +5,7 @@ public final class SpaceTradersRestEndpoints {
     public static final String SPACE_TRADERS = "https://api.spacetraders.io/v2";
     public static final String MY_ACCOUNT = SPACE_TRADERS + "/my/account";
     public static final String MY_AGENT = SPACE_TRADERS + "/my/agent";
+    public static final String MY_AGENT_EVENTS = MY_AGENT + "/events";
     public static final String AGENT_SEARCH = SPACE_TRADERS + "/agents";
     //Project Endpoints
     public static final String ACCOUNT = "/account";
