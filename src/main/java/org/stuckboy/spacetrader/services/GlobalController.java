@@ -10,6 +10,7 @@ import org.stuckboy.utils.FileReader;
 import java.net.URI;
 import java.net.http.HttpRequest;
 
+import static org.stuckboy.constants.Constants.*;
 import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.*;
 
 @RestController("/global")
@@ -22,12 +23,12 @@ public class GlobalController implements Controller {
      * @return A JSON payload containing information on the status of the game,
      * as a {@link String}.
      */
-    @GetMapping(path = STATUS, produces = "application/json")
+    @GetMapping(path = STATUS, produces = APPLICATION_JSON)
     public static String getGameStatus(@RequestParam String agentName) {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(SPACE_TRADERS))
-                .header("Authorization", "Bearer " + AGENT_SECRET)
+                .header(AUTH, BEARER + AGENT_SECRET)
                 .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
                 .build();
         return Controller.sendRequest(request);
@@ -39,7 +40,7 @@ public class GlobalController implements Controller {
      * @return A JSON payload describing the various error codes the game can
      * return during operations, as a {@link String}.
      */
-    @GetMapping(path = ERRORS, produces = "application/json")
+    @GetMapping(path = ERRORS, produces = APPLICATION_JSON)
     public String getErrors() {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(ERROR_CODES))

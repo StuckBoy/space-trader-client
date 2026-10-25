@@ -10,6 +10,7 @@ import org.stuckboy.utils.FileReader;
 import java.net.*;
 import java.net.http.HttpRequest;
 
+import static org.stuckboy.constants.Constants.*;
 import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.*;
 
 @RestController
@@ -22,12 +23,12 @@ public class SpaceTraderController implements Controller {
      * @return A {@link String} containing the details about the account in
      * question.
      */
-    @GetMapping(path = ACCOUNT, produces = "application/json")
+    @GetMapping(path = ACCOUNT, produces = APPLICATION_JSON)
     public static String getAccount(@RequestParam String agentName) {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(MY_ACCOUNT))
-                .header("Authorization", "Bearer " + AGENT_SECRET)
+                .header(AUTH, BEARER + AGENT_SECRET)
                 .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
                 .build();
         return Controller.sendRequest(request);

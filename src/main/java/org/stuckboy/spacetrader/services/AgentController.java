@@ -10,6 +10,7 @@ import org.stuckboy.utils.FileReader;
 import java.net.URI;
 import java.net.http.HttpRequest;
 
+import static org.stuckboy.constants.Constants.*;
 import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.*;
 import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.AGENT;
 import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.AGENTS;
@@ -26,12 +27,12 @@ public class AgentController implements Controller {
      * @return A {@link String} containing the details about the agent in
      * question.
      */
-    @GetMapping(path = AGENT, produces = "application/json")
+    @GetMapping(path = AGENT, produces = APPLICATION_JSON)
     public static String getAgent(@RequestParam String agentName) {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(MY_AGENT))
-                .header("Authorization", "Bearer " + AGENT_SECRET)
+                .header(AUTH, BEARER + AGENT_SECRET)
                 .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
                 .build();
         return Controller.sendRequest(request);
@@ -44,7 +45,7 @@ public class AgentController implements Controller {
      * @param page The page of details we wish to view.
      * @return A {@link String} containing the details about various agents.
      */
-    @GetMapping(path = AGENTS, produces = "application/json")
+    @GetMapping(path = AGENTS, produces = APPLICATION_JSON)
     public static String getAgentDetails(@RequestParam String agentName, @RequestParam Integer page) {
         if (page < 1) {
             page = 1; //Prevent zero and negative input
@@ -52,7 +53,7 @@ public class AgentController implements Controller {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(AGENT_SEARCH+"&page="+page))
-                .header("Authorization", "Bearer " + AGENT_SECRET)
+                .header(AUTH, BEARER + AGENT_SECRET)
                 .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
                 .build();
         return Controller.sendRequest(request);
@@ -63,12 +64,12 @@ public class AgentController implements Controller {
      * @param agentName The name of the Agent whose data we are interested in.
      * @return A {@link String} containing the recent events of the Agent.
      */
-    @GetMapping(path = AGENT_ACTIVITY, produces = "application/json")
+    @GetMapping(path = AGENT_ACTIVITY, produces = APPLICATION_JSON)
     public static String getAgentDetails(@RequestParam String agentName) {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(MY_AGENT_EVENTS))
-                .header("Authorization", "Bearer " + AGENT_SECRET)
+                .header(AUTH, BEARER + AGENT_SECRET)
                 .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
                 .build();
         return Controller.sendRequest(request);
@@ -80,12 +81,12 @@ public class AgentController implements Controller {
      * @return A {@link String} containing information about the Agent in
      * question.
      */
-    @GetMapping(path = AGENT_DETAILS, produces = "application/json")
+    @GetMapping(path = AGENT_DETAILS, produces = APPLICATION_JSON)
     public static String fetchSpecificAgentDetails(@RequestParam String agentName) {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(AGENT_SEARCH+"/"+agentName))
-                .header("Authorization", "Bearer " + AGENT_SECRET)
+                .header(AUTH, BEARER + AGENT_SECRET)
                 .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
                 .build();
         return Controller.sendRequest(request);

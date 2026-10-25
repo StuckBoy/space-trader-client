@@ -29,4 +29,8 @@ public final class Constants {
     public static final String WHITESPACE = " ";
     public static final String SPACE_TRADER_SECRET = "space_trader_secret";
     public static final String AGENT_SECRET = "agent_";
+
+    //Header Information
+    public static final String AUTH = "Authorization";
+    public static final String BEARER = "Bearer ";
 }

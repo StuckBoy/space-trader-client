@@ -10,7 +10,7 @@ import org.stuckboy.utils.FileReader;
 import java.net.URI;
 import java.net.http.HttpRequest;
 
-import static org.stuckboy.constants.Constants.APPLICATION_JSON;
+import static org.stuckboy.constants.Constants.*;
 import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.*;
 
 @RestController("/factions")
@@ -23,7 +23,7 @@ public class FactionController implements Controller {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(LIST_FACTIONS+"?page="+page))
-                .header("Authorization", "Bearer " + AGENT_SECRET)
+                .header(AUTH, BEARER + AGENT_SECRET)
                 .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
                 .build();
         return Controller.sendRequest(request);
@@ -43,7 +43,7 @@ public class FactionController implements Controller {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(MY_FACTION))
-                .header("Authorization", "Bearer " + AGENT_SECRET)
+                .header(AUTH, BEARER + AGENT_SECRET)
                 .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
                 .build();
         return Controller.sendRequest(request);
