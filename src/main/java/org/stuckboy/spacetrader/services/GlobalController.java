@@ -3,12 +3,11 @@ package org.stuckboy.spacetrader.services;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.stuckboy.constants.Constants;
 import org.stuckboy.interfaces.Controller;
 import org.stuckboy.utils.FileReader;
 
-import java.net.URI;
-import java.net.http.HttpRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.stuckboy.constants.Constants.*;
 import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.*;
@@ -26,12 +25,9 @@ public class GlobalController implements Controller {
     @GetMapping(path = STATUS, produces = APPLICATION_JSON)
     public static String getGameStatus(@RequestParam String agentName) {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(SPACE_TRADERS))
-                .header(AUTH, BEARER + AGENT_SECRET)
-                .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
-                .build();
-        return Controller.sendRequest(request);
+        Map<String, String> headers = new HashMap<>();
+        headers.put(AUTH, BEARER + AGENT_SECRET);
+        return Controller.sendRequest(Controller.buildGetRequest(SPACE_TRADERS, headers));
     }
 
     /**
@@ -42,10 +38,6 @@ public class GlobalController implements Controller {
      */
     @GetMapping(path = ERRORS, produces = APPLICATION_JSON)
     public String getErrors() {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(ERROR_CODES))
-                .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
-                .build();
-        return Controller.sendRequest(request);
+        return Controller.sendRequest(Controller.buildGetRequest(ERROR_CODES));
     }
 }

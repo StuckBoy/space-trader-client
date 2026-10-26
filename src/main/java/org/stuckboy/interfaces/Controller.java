@@ -5,9 +5,11 @@ import org.stuckboy.utils.ConnectionManager;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Map;
 
 /**
  * An interface designed to homogenize RESTful API calls. Implementors of this
@@ -27,6 +29,26 @@ public interface Controller {
             System.err.println(e.getMessage());
         }
         return result;
+    }
+
+    static HttpRequest buildGetRequest(String uri) {
+        return buildRequest(uri)
+                .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody())
+                .build();
+    }
+
+    static HttpRequest buildGetRequest(String uri, Map<String, String> headers) {
+        HttpRequest.Builder builder = buildRequest(uri)
+                .method(Constants.REQUEST_GET, HttpRequest.BodyPublishers.noBody());
+        for (Map.Entry<String, String> header : headers.entrySet()) {
+            builder.header(header.getKey(), header.getValue());
+        }
+        return builder.build();
+    }
+
+    static HttpRequest.Builder buildRequest(String uri) {
+        return HttpRequest.newBuilder()
+                .uri(URI.create(uri));
     }
 
     /**
