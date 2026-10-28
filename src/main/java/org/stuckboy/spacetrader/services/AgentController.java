@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.stuckboy.interfaces.Controller;
 import org.stuckboy.utils.FileReader;
 
+import java.net.http.HttpRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +32,8 @@ public class AgentController implements Controller {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         Map<String, String> headers = new HashMap<>();
         headers.put(AUTH, BEARER + AGENT_SECRET);
-        return Controller.sendRequest(Controller.buildGetRequest(MY_AGENT, headers));
+        HttpRequest request = Controller.buildGetRequest(MY_AGENT, headers);
+        return Controller.sendRequest(request);
     }
 
     /**
@@ -49,7 +51,9 @@ public class AgentController implements Controller {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         Map<String, String> headers = new HashMap<>();
         headers.put(AUTH, BEARER + AGENT_SECRET);
-        return Controller.sendRequest(Controller.buildGetRequest(AGENT_SEARCH+"?page="+page, headers));
+        String uri = AGENT_SEARCH+"?page="+page;
+        HttpRequest request = Controller.buildGetRequest(uri, headers);
+        return Controller.sendRequest(request);
     }
 
     /**
@@ -62,7 +66,8 @@ public class AgentController implements Controller {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         Map<String, String> headers = new HashMap<>();
         headers.put(AUTH, BEARER + AGENT_SECRET);
-        return Controller.sendRequest(Controller.buildGetRequest(MY_AGENT_EVENTS, headers));
+        HttpRequest request = Controller.buildGetRequest(MY_AGENT_EVENTS, headers);
+        return Controller.sendRequest(request);
     }
 
     /**
@@ -76,6 +81,8 @@ public class AgentController implements Controller {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         Map<String, String> headers = new HashMap<>();
         headers.put(AUTH, BEARER + AGENT_SECRET);
-        return Controller.sendRequest(Controller.buildGetRequest(AGENT_SEARCH+"/"+agentName, headers));
+        String uri = AGENT_SEARCH+"/"+agentName;
+        HttpRequest request = Controller.buildGetRequest(uri, headers);
+        return Controller.sendRequest(request);
     }
 }

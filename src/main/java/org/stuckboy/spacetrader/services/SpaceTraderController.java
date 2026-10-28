@@ -7,6 +7,7 @@ import org.stuckboy.interfaces.Controller;
 import org.stuckboy.utils.FileReader;
 
 import java.net.*;
+import java.net.http.HttpRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,6 +29,7 @@ public class SpaceTraderController implements Controller {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         Map<String, String> headers = new HashMap<>();
         headers.put(AUTH, BEARER + AGENT_SECRET);
-        return Controller.sendRequest(Controller.buildGetRequest(MY_ACCOUNT, headers));
+        HttpRequest request = Controller.buildGetRequest(MY_ACCOUNT, headers);
+        return Controller.sendRequest(request);
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.stuckboy.interfaces.Controller;
 import org.stuckboy.utils.FileReader;
 
+import java.net.http.HttpRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +28,8 @@ public class GlobalController implements Controller {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         Map<String, String> headers = new HashMap<>();
         headers.put(AUTH, BEARER + AGENT_SECRET);
-        return Controller.sendRequest(Controller.buildGetRequest(SPACE_TRADERS, headers));
+        HttpRequest request = Controller.buildGetRequest(SPACE_TRADERS, headers);
+        return Controller.sendRequest(request);
     }
 
     /**
@@ -38,6 +40,7 @@ public class GlobalController implements Controller {
      */
     @GetMapping(path = ERRORS, produces = APPLICATION_JSON)
     public String getErrors() {
-        return Controller.sendRequest(Controller.buildGetRequest(ERROR_CODES));
+        HttpRequest request = Controller.buildGetRequest(ERROR_CODES);
+        return Controller.sendRequest(request);
     }
 }

@@ -24,7 +24,9 @@ public class ContractController implements Controller {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         Map<String, String> headers = new HashMap<>();
         headers.put(AUTH, BEARER + AGENT_SECRET);
-        return Controller.sendRequest(Controller.buildGetRequest(MY_CONTRACTS + "?page=" + page, headers));
+        String uri = MY_CONTRACTS + "?page=" + page;
+        HttpRequest request = Controller.buildGetRequest(uri, headers);
+        return Controller.sendRequest(request);
     }
 
     @GetMapping(path = AGENT_CONTRACT, produces = APPLICATION_JSON)
@@ -32,7 +34,9 @@ public class ContractController implements Controller {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         Map<String, String> headers = new HashMap<>();
         headers.put(AUTH, BEARER + AGENT_SECRET);
-        return Controller.sendRequest(Controller.buildGetRequest(MY_CONTRACTS + "/" + contractName, headers));
+        String uri = MY_CONTRACTS + "/" + contractName;
+        HttpRequest request = Controller.buildGetRequest(uri, headers);
+        return Controller.sendRequest(request);
     }
 
     @PostMapping(path = ACCEPT_CONTRACT, produces = APPLICATION_JSON)
@@ -40,8 +44,9 @@ public class ContractController implements Controller {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         Map<String, String> headers = new HashMap<>();
         headers.put(AUTH, BEARER + AGENT_SECRET);
-        HttpRequest postRequest = Controller.buildPostRequest(MY_CONTRACTS + "/" + contractId + ACCEPT, headers);
-        return Controller.sendRequest(postRequest);
+        String uri = MY_CONTRACTS + "/" + contractId + ACCEPT;
+        HttpRequest request = Controller.buildPostRequest(uri, headers);
+        return Controller.sendRequest(request);
     }
 
     @PostMapping(path = FULFILL_CONTRACT, produces = APPLICATION_JSON)
@@ -49,8 +54,9 @@ public class ContractController implements Controller {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         Map<String, String> headers = new HashMap<>();
         headers.put(AUTH, BEARER + AGENT_SECRET);
-        HttpRequest postRequest = Controller.buildPostRequest(MY_CONTRACTS + "/" + contractId + FULFILL, headers);
-        return Controller.sendRequest(postRequest);
+        String uri = MY_CONTRACTS + "/" + contractId + FULFILL;
+        HttpRequest request = Controller.buildPostRequest(uri, headers);
+        return Controller.sendRequest(request);
     }
 
     @PostMapping(path = DELIVER_CONTRACT_CARGO, produces = APPLICATION_JSON)
@@ -59,8 +65,9 @@ public class ContractController implements Controller {
         Map<String, String> headers = new HashMap<>();
         headers.put(AUTH, BEARER + AGENT_SECRET);
         //TODO Prepare required body parameters
-        HttpRequest postRequest = Controller.buildPostRequest(MY_CONTRACTS + "/" + contractId + DELIVER, headers);
-        return Controller.sendRequest(postRequest);
+        String uri = MY_CONTRACTS + "/" + contractId + DELIVER;
+        HttpRequest request = Controller.buildPostRequest(uri, headers);
+        return Controller.sendRequest(request);
     }
 
     @PostMapping(path = NEGOTIATE_CONTRACT, produces = APPLICATION_JSON)
@@ -68,7 +75,8 @@ public class ContractController implements Controller {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         Map<String, String> headers = new HashMap<>();
         headers.put(AUTH, BEARER + AGENT_SECRET);
-        HttpRequest postRequest = Controller.buildPostRequest(MY_CONTRACTS + "/" + shipSymbol + NEGOTIATE, headers);
-        return Controller.sendRequest(postRequest);
+        String uri = MY_CONTRACTS + "/" + shipSymbol + NEGOTIATE;
+        HttpRequest request = Controller.buildPostRequest(uri, headers);
+        return Controller.sendRequest(request);
     }
 }
