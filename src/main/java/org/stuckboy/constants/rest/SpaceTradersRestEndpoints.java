@@ -12,6 +12,7 @@ public final class SpaceTradersRestEndpoints {
     public static final String AGENT_SEARCH = SPACE_TRADERS + "/agents";
     //Contract Operations
     public static final String MY_CONTRACTS = SPACE_TRADERS + "/my/contracts";
+    //TODO Is this supposed to be here?
     public static final String MY_SHIPS = SPACE_TRADERS + "/my/ships";
     public static final String ACCEPT = "/accept";
     public static final String FULFILL = "/fulfill";
@@ -34,6 +35,10 @@ public final class SpaceTradersRestEndpoints {
     //Contract Endpoints
     public static final String AGENT_CONTRACTS = "/agent-contracts";
     public static final String AGENT_CONTRACT = "/agent-contract";
+    public static final String ACCEPT_CONTRACT = "/accept-contract";
+    public static final String FULFILL_CONTRACT = "/fulfill-contract";
+    public static final String DELIVER_CONTRACT_CARGO = "/deliver-contract-cargo";
+    public static final String NEGOTIATE_CONTRACT = "/negotiate-contract";
     //Faction Endpoints
     public static final String LOOKUP_FACTIONS = "/lookup-factions";
     public static final String FACTION_DATA = "/faction-data";

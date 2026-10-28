@@ -46,6 +46,15 @@ public interface Controller {
         return builder.build();
     }
 
+    static HttpRequest buildPostRequest(String uri, Map<String, String> headers) {
+        HttpRequest.Builder builder = buildRequest(uri)
+                .method(Constants.REQUEST_POST, HttpRequest.BodyPublishers.noBody());
+        for (Map.Entry<String, String> header : headers.entrySet()) {
+            builder.header(header.getKey(), header.getValue());
+        }
+        return builder.build();
+    }
+
     static HttpRequest.Builder buildRequest(String uri) {
         return HttpRequest.newBuilder()
                 .uri(URI.create(uri));
