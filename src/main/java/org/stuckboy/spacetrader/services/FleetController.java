@@ -91,7 +91,7 @@ public class FleetController implements Controller {
         Map<String, String> headers = new HashMap<>();
         headers.put(AUTH, BEARER + AGENT_SECRET);
         //TODO Include body in request
-        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + SpaceTradersRestEndpoints.EXTRACT_PLUS_SURVEY, headers);
+        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + SpaceTradersRestEndpoints.EXTRACT_AND_SURVEY, headers);
         return Controller.sendRequest(request);
     }
 
