@@ -22,7 +22,8 @@ public final class SpaceTradersRestEndpoints {
     public static final String COOLDOWN = "/cooldown";
     public static final String DOCK = "/dock";
     public static final String EXTRACT = "/extract";
-    public static final String SURVEY = EXTRACT + "/survey";
+    public static final String SURVEY = "/survey";
+    public static final String EXTRACT_AND_SURVEY = EXTRACT + SURVEY;
     public static final String JETTISON = "/jettison";
     public static final String JUMP = "/jump";
     public static final String SCAN = "/scan";
@@ -45,6 +46,8 @@ public final class SpaceTradersRestEndpoints {
     public static final String INSTALL = "/install";
     public static final String REMOVE = "/remove";
     public static final String MOUNTS = "/mounts";
+    public static final String MODULES_INSTALL = MODULES + INSTALL;
+    public static final String MODULES_REMOVE = MODULES + REMOVE;
     public static final String INSTALL_MOUNT = MOUNTS + INSTALL;
     public static final String REMOVE_MOUNT = MOUNTS + REMOVE;
     public static final String NAV = "/nav";
@@ -79,10 +82,12 @@ public final class SpaceTradersRestEndpoints {
     public static final String SHIP_DETAILS = "/ship-details";
     public static final String CHART_WAYPOINT = "/chart-waypoint";
     public static final String SHIP_COOLDOWN = "/ship-cooldown";
-    public static final String EXTRACT_AND_SURVEY = "/extract-and-survey";
+    public static final String EXTRACT_PLUS_SURVEY = "/extract-and-survey";
+    public static final String CREATE_SURVEY = "/create-survey";
     public static final String SCRAP_SHIP = "/scrap-ship";
     public static final String ACQUIRE_SCRAP = "/acquire-scrap";
     public static final String REPAIR_BILL = "repair-bill";
+    public static final String SHIP_MODULES = "/ship-modules";
     //System Endpoints
     //Data Endpoints
     //Global Endpoints

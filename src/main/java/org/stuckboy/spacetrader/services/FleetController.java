@@ -1,8 +1,10 @@
 package org.stuckboy.spacetrader.services;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.stuckboy.constants.rest.SpaceTradersRestEndpoints;
 import org.stuckboy.interfaces.Controller;
 import org.stuckboy.utils.FileReader;
 
@@ -83,13 +85,13 @@ public class FleetController implements Controller {
         return Controller.sendRequest(request);
     }
 
-    @PostMapping(path = EXTRACT_AND_SURVEY, produces = APPLICATION_JSON)
+    @PostMapping(path = EXTRACT_PLUS_SURVEY, produces = APPLICATION_JSON)
     public static String extractResourcesAndSurvey(@RequestParam String agentName, @RequestParam String shipId) {
         String AGENT_SECRET = FileReader.readAgentSecret(agentName);
         Map<String, String> headers = new HashMap<>();
         headers.put(AUTH, BEARER + AGENT_SECRET);
         //TODO Include body in request
-        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + SURVEY, headers);
+        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + SpaceTradersRestEndpoints.EXTRACT_PLUS_SURVEY, headers);
         return Controller.sendRequest(request);
     }
 
@@ -247,4 +249,117 @@ public class FleetController implements Controller {
         return Controller.sendRequest(request);
     }
 
+    @PostMapping(path = SIPHON, produces = APPLICATION_JSON)
+    public static String siphonResources(@RequestParam String agentName, @RequestParam String shipId) {
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        Map<String, String> headers = new HashMap<>();
+        headers.put(AUTH, BEARER + AGENT_SECRET);
+        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + SIPHON, headers);
+        return Controller.sendRequest(request);
+    }
+
+    @PostMapping(path = CREATE_SURVEY, produces = APPLICATION_JSON)
+    public static String createSurvey(@RequestParam String agentName, @RequestParam String shipId) {
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        Map<String, String> headers = new HashMap<>();
+        headers.put(AUTH, BEARER + AGENT_SECRET);
+        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + SCAN, headers);
+        return Controller.sendRequest(request);
+    }
+
+    @PostMapping(path = TRANSFER, produces = APPLICATION_JSON)
+    public static String transferCargo(@RequestParam String agentName, @RequestParam String shipId) {
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        Map<String, String> headers = new HashMap<>();
+        headers.put(AUTH, BEARER + AGENT_SECRET);
+        //TODO Include body in request
+        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + TRANSFER, headers);
+        return Controller.sendRequest(request);
+    }
+
+    @GetMapping(path = CARGO, produces = APPLICATION_JSON)
+    public static String getShipCargo(@RequestParam String agentName, @RequestParam String shipId) {
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        Map<String, String> headers = new HashMap<>();
+        headers.put(AUTH, BEARER + AGENT_SECRET);
+        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + CARGO, headers);
+        return Controller.sendRequest(request);
+    }
+
+    @GetMapping(path = MODULES, produces = APPLICATION_JSON)
+    public static String getShipModules(@RequestParam String agentName, @RequestParam String shipId) {
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        Map<String, String> headers = new HashMap<>();
+        headers.put(AUTH, BEARER + AGENT_SECRET);
+        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + MODULES, headers);
+        return Controller.sendRequest(request);
+    }
+
+    @PostMapping(path = MODULES_INSTALL, produces = APPLICATION_JSON)
+    public static String installModule(@RequestParam String agentName, @RequestParam String shipId) {
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        Map<String, String> headers = new HashMap<>();
+        headers.put(AUTH, BEARER + AGENT_SECRET);
+        //TODO Include body in request
+        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + MODULES + INSTALL, headers);
+        return Controller.sendRequest(request);
+    }
+
+    @PostMapping(path = MODULES_REMOVE, produces = APPLICATION_JSON)
+    public static String removeModule(@RequestParam String agentName, @RequestParam String shipId) {
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        Map<String, String> headers = new HashMap<>();
+        headers.put(AUTH, BEARER + AGENT_SECRET);
+        //TODO Include body in request
+        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + MODULES + REMOVE, headers);
+        return Controller.sendRequest(request);
+    }
+
+    @GetMapping(path = MOUNTS, produces = APPLICATION_JSON)
+    public static String getMounts(@RequestParam String agentName, @RequestParam String shipId) {
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        Map<String, String> headers = new HashMap<>();
+        headers.put(AUTH, BEARER + AGENT_SECRET);
+        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + MOUNTS, headers);
+        return Controller.sendRequest(request);
+    }
+
+    @PostMapping(path = INSTALL_MOUNT, produces = APPLICATION_JSON)
+    public static String installMount(@RequestParam String agentName, @RequestParam String shipId) {
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        Map<String, String> headers = new HashMap<>();
+        headers.put(AUTH, BEARER + AGENT_SECRET);
+        //TODO Include body in request
+        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + INSTALL_MOUNT, headers);
+        return Controller.sendRequest(request);
+    }
+
+    @PostMapping(path = REMOVE_MOUNT, produces = APPLICATION_JSON)
+    public static String removeMount(@RequestParam String agentName, @RequestParam String shipId) {
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        Map<String, String> headers = new HashMap<>();
+        headers.put(AUTH, BEARER + AGENT_SECRET);
+        //TODO Include body in request
+        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + MOUNTS + REMOVE, headers);
+        return Controller.sendRequest(request);
+    }
+
+    @GetMapping(path = NAV, produces = APPLICATION_JSON)
+    public static String getNavStatus(@RequestParam String agentName, @RequestParam String shipId) {
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        Map<String, String> headers = new HashMap<>();
+        headers.put(AUTH, BEARER + AGENT_SECRET);
+        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + NAV, headers);
+        return Controller.sendRequest(request);
+    }
+
+    @PatchMapping(path = NAV, produces = APPLICATION_JSON)
+    public static String patchNavigation(@RequestParam String agentName, @RequestParam String shipId) {
+        String AGENT_SECRET = FileReader.readAgentSecret(agentName);
+        Map<String, String> headers = new HashMap<>();
+        headers.put(AUTH, BEARER + AGENT_SECRET);
+        //TODO Include body in request
+        HttpRequest request = Controller.buildPostRequest(MY_SHIPS + "/" + shipId + NAV, headers);
+        return Controller.sendRequest(request);
+    }
 }
