@@ -55,6 +55,13 @@ public final class SpaceTradersRestEndpoints {
     public static final String LIST_FACTIONS = SPACE_TRADERS + "/factions";
     public static final String MY_FACTION = SPACE_TRADERS + "/my/factions";
     //System Operations
+    public static final String SYSTEMS = SPACE_TRADERS + "/systems";
+    public static final String WAYPOINTS = "/waypoints";
+    public static final String CONSTRUCTION = "/construction";
+    public static final String CONSTRUCTION_SUPPLY = CONSTRUCTION + "/supply";
+    public static final String MARKET = "/market";
+    public static final String JUMP_GATE = "/jump-gate";
+    public static final String SHIPYARD = "/shipyard";
     public static final String ERROR_CODES = SPACE_TRADERS + "/error-codes";
 
     //Project Endpoints
