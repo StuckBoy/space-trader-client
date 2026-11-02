@@ -1,9 +1,6 @@
 package org.stuckboy.spacetrader.services;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.stuckboy.constants.rest.SpaceTradersRestEndpoints;
 import org.stuckboy.interfaces.Controller;
 import org.stuckboy.utils.FileReader;
@@ -15,6 +12,7 @@ import java.util.Map;
 import static org.stuckboy.constants.Constants.*;
 import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.*;
 
+@RestController("/fleet")
 public class FleetController implements Controller {
 
     @GetMapping(path = AGENT_SHIPS, produces = APPLICATION_JSON)
