@@ -1,4 +1,23 @@
 package org.stuckboy.models.waypoint;
 
-public class WaypointFaction {
+public enum WaypointFaction {
+    COSMIC,
+    VOID,
+    GALACTIC,
+    QUANTUM,
+    DOMINION,
+    ASTRO,
+    CORSAIRS,
+    OBSIDIAN,
+    AEGIS,
+    UNITED,
+    SOLITARY,
+    COBALT,
+    OMEGA,
+    ECHO,
+    LORDS,
+    CULT,
+    ANCIENTS,
+    SHADOW,
+    ETHEREAL
 }

@@ -1,4 +1,7 @@
 package org.stuckboy.models.ship.shipnav;
 
-public class ShipNavStatus {
+public enum ShipNavStatus {
+    IN_TRANSIT,
+    IN_ORBIT,
+    DOCKED
 }

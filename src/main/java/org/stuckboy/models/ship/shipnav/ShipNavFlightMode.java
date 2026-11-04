@@ -1,4 +1,8 @@
 package org.stuckboy.models.ship.shipnav;
 
-public class ShipNavFlightMode {
+public enum ShipNavFlightMode {
+    DRIFT,
+    STEALTH,
+    CRUISE,
+    BURN
 }
