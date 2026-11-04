@@ -94,13 +94,11 @@ public final class SpaceTradersRestEndpoints {
     public static final String SCRAP_SHIP = "/scrap-ship";
     public static final String ACQUIRE_SCRAP = "/acquire-scrap";
     public static final String REPAIR_BILL = "repair-bill";
-    public static final String SHIP_MODULES = "/ship-modules";
     //System Endpoints
     public static final String FETCH_SYSTEMS = "/fetch-systems";
     public static final String SYSTEM_INFO = "/system-info";
     public static final String SYSTEM_WAYPOINTS = "/system-waypoints";
     public static final String WAYPOINT_DATA = "/waypoint-data";
-    public static final String WAYPOINT_CONSTRUCTION = "/waypoint-construction";
     public static final String SUPPLY_CONSTRUCTION = "/supply-construction";
     //Data Endpoints
     //Global Endpoints
