@@ -27,4 +27,44 @@ public class ShipNavRouteWaypoint {
      * The position within the Universe, relative to the Y-axis.
      */
     private Integer y_position;
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public WaypointType getType() {
+        return type;
+    }
+
+    public void setType(WaypointType type) {
+        this.type = type;
+    }
+
+    public SystemSymbol getSymbolSystem() {
+        return symbolSystem;
+    }
+
+    public void setSymbolSystem(SystemSymbol symbolSystem) {
+        this.symbolSystem = symbolSystem;
+    }
+
+    public Integer getX_position() {
+        return x_position;
+    }
+
+    public void setX_position(Integer x_position) {
+        this.x_position = x_position;
+    }
+
+    public Integer getY_position() {
+        return y_position;
+    }
+
+    public void setY_position(Integer y_position) {
+        this.y_position = y_position;
+    }
 }

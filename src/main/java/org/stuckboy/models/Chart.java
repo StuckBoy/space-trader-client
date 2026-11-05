@@ -11,4 +11,28 @@ public class Chart {
     private WaypointSymbol waypointSymbol;
     private String submittedBy;
     private String submittedOn;
+
+    public WaypointSymbol getWaypointSymbol() {
+        return waypointSymbol;
+    }
+
+    public void setWaypointSymbol(WaypointSymbol waypointSymbol) {
+        this.waypointSymbol = waypointSymbol;
+    }
+
+    public String getSubmittedBy() {
+        return submittedBy;
+    }
+
+    public void setSubmittedBy(String submittedBy) {
+        this.submittedBy = submittedBy;
+    }
+
+    public String getSubmittedOn() {
+        return submittedOn;
+    }
+
+    public void setSubmittedOn(String submittedOn) {
+        this.submittedOn = submittedOn;
+    }
 }

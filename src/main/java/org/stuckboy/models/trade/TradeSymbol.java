@@ -1,4 +1,4 @@
-package org.stuckboy.models;
+package org.stuckboy.models.trade;
 
 public enum TradeSymbol {
     PRECIOUS_STONES,

@@ -11,4 +11,36 @@ public class ShipNavRoute {
     private Waypoint origin;
     private String departureTime;
     private String arrival;
+
+    public Waypoint getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Waypoint destination) {
+        this.destination = destination;
+    }
+
+    public Waypoint getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(Waypoint origin) {
+        this.origin = origin;
+    }
+
+    public String getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    public String getArrival() {
+        return arrival;
+    }
+
+    public void setArrival(String arrival) {
+        this.arrival = arrival;
+    }
 }

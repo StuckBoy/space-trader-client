@@ -1,4 +1,7 @@
 package org.stuckboy.models;
 
-public class SurveySize {
+public enum SurveySize {
+    SMALL,
+    MODERATE,
+    LARGE
 }
