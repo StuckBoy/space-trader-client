@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.stuckboy.constants.Constants.*;
+import static org.stuckboy.constants.rest.ApplicationEndpoints.ERRORS;
+import static org.stuckboy.constants.rest.ApplicationEndpoints.STATUS;
 import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.*;
 
 @RestController("/global")

@@ -11,10 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.stuckboy.constants.Constants.*;
+import static org.stuckboy.constants.rest.ApplicationEndpoints.*;
 import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.*;
-import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.AGENT;
-import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.AGENTS;
-import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.AGENT_DETAILS;
 import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.AGENT_SEARCH;
 import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.MY_AGENT;
 

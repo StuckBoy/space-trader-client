@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.stuckboy.constants.Constants.*;
+import static org.stuckboy.constants.rest.ApplicationEndpoints.ACCOUNT;
 import static org.stuckboy.constants.rest.SpaceTradersRestEndpoints.*;
 
 @RestController
