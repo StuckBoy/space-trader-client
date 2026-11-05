@@ -2,7 +2,7 @@ package org.stuckboy.models.ship;
 
 public class ShipFuel {
 
-    public class ConsumedFuel {
+    public static class ConsumedFuel {
         private Integer amount;
         private String timestamp;
 

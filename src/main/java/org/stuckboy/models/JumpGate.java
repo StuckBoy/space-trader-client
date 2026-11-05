@@ -5,8 +5,7 @@ import org.stuckboy.models.waypoint.WaypointSymbol;
 import java.util.List;
 
 public class JumpGate {
-    //TODO Can this just be a String? Does it need to be a specific object?
-    private WaypointSymbol symbol;
+    private String symbol;
     List<String> connections;
 
     public WaypointSymbol getSymbol() {

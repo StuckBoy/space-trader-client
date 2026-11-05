@@ -1,4 +1,9 @@
 package org.stuckboy.models.trade;
 
-public class SupplyLevel {
+public enum SupplyLevel {
+    SCARCE,
+    LIMITED,
+    MODERATE,
+    HIGH,
+    ABUNDANT
 }

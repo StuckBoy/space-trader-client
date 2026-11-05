@@ -4,7 +4,7 @@ import org.stuckboy.models.trade.TradeSymbol;
 
 public class Extraction {
 
-    public class Yield {
+    public static class Yield {
         private TradeSymbol symbol;
 
         public TradeSymbol getSymbol() {
